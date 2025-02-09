@@ -399,3 +399,4 @@ dist
 .serverless/**/*.zip
 package-lock.json
 /prisma/migrations
+.env
