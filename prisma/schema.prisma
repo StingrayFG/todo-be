@@ -17,6 +17,7 @@ model Task {
   uuid              String    @id
   contents          String
   date              DateTime  @db.Timestamptz(3)  @default(dbgenerated("NOW()")) 
+  isComplete        Boolean   @default(false)
 
   @@map("task")
 }
