@@ -17,6 +17,11 @@ export class AppController {
     return await this.appService.addTask(body.contents);
   }
 
+  @Post('update-is-complete')
+  async updateTask(@Body() body: { uuid: string, isComplete: boolean }): Promise<(Task | void)> {
+    return await this.appService.updateTask(body.uuid, body.isComplete);
+  }
+
   @Post('delete')
   async deleteTask(@Body() body: { uuid: string }): Promise<(Task | void)> {
     return await this.appService.deleteTask(body.uuid);

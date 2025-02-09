@@ -1,7 +1,7 @@
 import { Module, NestModule, MiddlewareConsumer, RequestMethod } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ValidateContents, ValidateUuid} from './app.middleware';
+import { ValidateContents, ValidateIsComplete, ValidateUuid} from './app.middleware';
 
 @Module({
   imports: [],
@@ -13,5 +13,7 @@ export class AppModule implements NestModule {
     consumer
       .apply(ValidateContents).forRoutes('task/add')
       .apply(ValidateUuid).forRoutes('task/delete')
+      .apply(ValidateUuid).forRoutes('task/update')
+      .apply(ValidateIsComplete).forRoutes('task/update')
   }
 }

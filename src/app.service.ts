@@ -42,6 +42,25 @@ export class AppService {
     })
   }
 
+  async updateTask(uuid: string, isComplete: boolean): Promise<(Task | void)> {
+    return new Promise<(Task | void)>(async (resolve, reject) => {
+      await prisma.task.update({
+        where: {
+          uuid: uuid
+        },
+        data: {
+          isComplete: !isComplete
+        }
+      })
+      .then((task: Task) => {
+        resolve(task); 
+      })
+      .catch((err: any) => {
+        reject();
+      })
+    })
+  }
+
   async deleteTask(uuid: string): Promise<(Task | void)> {
     return new Promise<(Task | void)>(async (resolve, reject) => {
       await prisma.task.delete({

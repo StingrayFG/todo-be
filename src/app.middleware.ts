@@ -44,3 +44,18 @@ export class ValidateUuid implements NestMiddleware {
     }
   }
 }
+
+@Injectable()
+export class ValidateIsComplete implements NestMiddleware {
+  use(req: Request, res: Response, next: NextFunction) {
+    if (req.body?.isComplete) {
+      if (typeof(req.body.contents) === 'boolean') {
+        next();
+      } else {
+        return res.sendStatus(400);
+      }
+    } else {
+      return res.sendStatus(400);
+    }
+  }
+}
