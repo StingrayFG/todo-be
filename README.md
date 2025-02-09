@@ -13,10 +13,12 @@ npm i
 cp .env.example .env
 ```
 After that, configure the DATABASE_URL environment variable value in the .env file according to your configuration of postgresql in the system.
-a
+
+
 In case of you not having postgresql installed in your system, you can run it in a container using docker with the following command:
 ```sudo docker run --name my-postgres -e POSTGRES_PASSWORD=123 -d -p 5433:5432 postgres```
-Then run
+
+Then run the following:
 ```
 npx prisma migrate dev
 npm start
